@@ -1,0 +1,75 @@
+﻿@model IEnumerable<CarWithAKT.Models.Firm>
+
+@{
+    ViewBag.Title = "Фирмы";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    @if (User.IsInRole("admin") || User.IsInRole("worker"))
+    {
+    <div class="pagetitle">
+        <h2>Фирмы</h2>
+
+
+        <form action="@Url.Action("Create", "Firms")"><button style="display:block;margin: 0 auto" class="mybutton">Добавить фирму</button></form>
+        
+
+    </div>
+        <p>
+
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    Название фирмы:
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td style="display:flex;flex-direction:row;justify-content:center;">
+                        @if (User.IsInRole("admin"))
+                        {
+                            @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new {@style = "text-decoration:none;color:black" })
+                            <p style="width:30px"></p>
+                            @Html.ActionLink("Изменить название", "Edit", new { id = item.Id }, new { @style = "text-decoration:none;color:black" })
+                        }
+                    </td>
+                </tr>
+            }
+
+
+        </table>
+    }
+    else
+    {
+        <div class="pagetitle">
+            <h2>Фирмы</h2>
+        </div>
+        <p>
+
+        </p>
+        <div style="display:flex;justify-content:center;">
+            <table class="table" style="width:400px">
+                <tr>
+                    <th style="text-align: center;">
+                        Название фирмы:
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="text-align: center;">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+            }
+</div>

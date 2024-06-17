@@ -1,0 +1,150 @@
+﻿@model CarWithAKT.Models.Car
+
+@{
+    ViewBag.Title = "Новое авто";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="display:flex;justify-content:space-between">
+    <h2>Новое авто</h2>
+    @Html.ActionLink("Вернутся к списку", "Index", null, new { @class = "btn btn-warning ", @style = "margin-top:15px;height:40px;color:#fff;background-color:#212529;border-color:#212529;" })
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        Цвет:
+        <div class="form-group">
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Color, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Тип кузова:
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Body_type, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Body_type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Тип топлива:
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fuel_type, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fuel_type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Расход на 100 км:
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fuel_use, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Fuel_use, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Объём двигателя:
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Engine_cap, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Engine_cap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Масса авто:
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mass, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mass, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Тип двигателя:
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Engine_type, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Engine_type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Кличество мест:
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Seats_num, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Seats_num, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Количество дверей:
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Door_num, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Door_num, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Мощность:
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Power, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Power, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Расположение водительского сиденья: (Право/Лево)
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Driver_type, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Driver_type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Привод:
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Transmission_type, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Transmission_type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Цена:
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        Модель:
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Modelname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Modelname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        Выберете фирму-производителя:
+        <div class="form-group">
+            @Html.DropDownListFor(model => model.FirmId, ViewBag.firms as SelectList)
+        </div>
+        Выберете страну-производителя:
+        <div class="form-group">
+            @Html.DropDownListFor(model => model.CountryId, ViewBag.countries as SelectList)
+        </div>
+
+        Выберете фото:
+        <div class="form-group">
+            <div class="col-md-10">
+                <p>
+                    <input value="@Model.Img" class="form-control" type="file" id="Img" name="Img" multiple accept="image/jpeg">
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Сохранить" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

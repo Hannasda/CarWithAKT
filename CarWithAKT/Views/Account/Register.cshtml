@@ -1,0 +1,61 @@
+﻿@model CarWithAKT.Models.Auth.RegAuth
+@{
+    ViewBag.Title = "Sign Up";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="pagetitle">
+        <h2>Register</h2>
+    </div>
+
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="mylogin">
+            @Html.ValidationSummary(true)
+            <hr />
+            <div>
+                <p>Имя</p>
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+
+            <div>
+                <p>Фамилия</p>
+                @Html.EditorFor(model => model.Surname)
+                @Html.ValidationMessageFor(model => model.Surname)
+            </div>
+            <div>
+                <p>Адресс електронной почты</p>
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div>
+                <p>Номер телефонa</p>
+                @Html.EditorFor(model => model.Phone)
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+            <div>
+                <p>Пароль</p>
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <div>
+                <p>Повторите пароль</p>
+                @Html.EditorFor(model => model.ConfirmPassword)
+                @Html.ValidationMessageFor(model => model.ConfirmPassword)
+            </div>
+
+            <button type="submit" value="Sign up" class="mybutton">Зарегестрироваться</button>
+        </div>
+    }
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</div>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CarWithAKT.Models.Location>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container"">
+    <div class="pagetitle" >
+        <h2>Доступные салоны:</h2>
+
+        @if (User.IsInRole("admin"))
+        {
+            <form action="@Url.Action("AdminIndex","Locations")"><button style="display:block;width:170px;margin: 0 auto" class="mybutton">Администрирование</button></form>
+        }
+
+    </div>
+
+    <div class="row mt-15 mb-2" style="margin-top:70px;">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+        <div class="col-lg-6">
+            <div class="mycircle">
+                <p>@(i+1)</p>
+            </div>
+            <p class="circlename">@Model.ElementAt(i).Name</p>
+            <p class="circleadress">@Model.ElementAt(i).Adress</p>
+        </div>
+        }
+    </div>
+
+
+
+</div>

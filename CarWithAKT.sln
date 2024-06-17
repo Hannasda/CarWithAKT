@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarWithAKT", "CarWithAKT\CarWithAKT.csproj", "{5C7407DC-C86B-4007-B76B-F243707FE551}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateTesting", "CreateTesting\CreateTesting.csproj", "{EA367B39-7DA6-4F2E-BF64-B3F5B34410B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C7407DC-C86B-4007-B76B-F243707FE551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C7407DC-C86B-4007-B76B-F243707FE551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C7407DC-C86B-4007-B76B-F243707FE551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C7407DC-C86B-4007-B76B-F243707FE551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA367B39-7DA6-4F2E-BF64-B3F5B34410B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA367B39-7DA6-4F2E-BF64-B3F5B34410B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA367B39-7DA6-4F2E-BF64-B3F5B34410B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA367B39-7DA6-4F2E-BF64-B3F5B34410B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C3611052-99F7-438E-B649-4AB75F6FC1CC}
+	EndGlobalSection
+EndGlobal

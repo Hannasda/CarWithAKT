@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CarWithAKT.Models.Location>
+
+@{
+    ViewBag.Title = "AdminIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="pagetitle">
+        <h2>Доступные салоны:</h2>
+
+
+        <form action="@Url.Action("Create","Locations")"><button style="display:block;margin: 0 auto" class="mybutton">Добавить салон</button></form>
+
+    </div>
+
+    {
+    <table class="table mytable" style="margin-top:20px">
+        <tr>
+            <th>
+                Название салона
+            </th>
+            <th>
+                Адресс
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adress)
+                </td>
+                <td>
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { @style = "text-decoration:none;color:black" })
+                    <p style="width:30px"></p>
+                    @Html.ActionLink("Изменить название", "Edit", new { id = item.Id }, new { @style = "text-decoration:none;color:black" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    
+
+</div>

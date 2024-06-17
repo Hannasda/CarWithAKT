@@ -1,0 +1,40 @@
+﻿@model IEnumerable<CarWithAKT.Models.Country>
+
+@{
+    ViewBag.Title = "AdminIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="pagetitle">
+        <h2>Страны:</h2>
+
+
+        <form action="@Url.Action("Create","Countries")"><button style="display:block;margin: 0 auto" class="mybutton">Добавить страну</button></form>
+
+    </div>
+
+    
+    <div style="display:flex;justify-content:center; margin-top:20px">
+        <table class="table" style="width:700px">
+
+            @foreach (var item in Model)
+            {
+                <tr style="display:flex;flex-direction:row;justify-content:space-around;width:100%">
+                    <td style="width:50%;text-align: center; display:flex;justify-content:center">
+                        <img style="border:1px solid #cecece; width:33px;height:20px" src="~/Img/Flags/@(item.Shortname).png" />
+                        <p style="width:100px">@Html.DisplayFor(modelItem => item.Name)</p>
+                    </td>
+                    
+                    <td style="width: 50%;display:flex; justify-content: center">
+                        
+                        @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { @style = "text-decoration:none;color:black;" })
+                        
+                        @Html.ActionLink("Изменить", "Edit", new { id = item.Id }, new { @style = "text-decoration:none;color:black;padding-left:20px;" })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+
+</div>

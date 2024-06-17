@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title – приложение ASP</title>
+    <link rel="stylesheet" href="~/Content/Site.css" type="text/css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header style="margin-bottom:15px">
+        
+        <nav class="navbar-fixed-top myheader" , style="background-color:white">
+            <div class=" myheader navbar-center">
+
+                <ul class="nav navbar-nav navbar-left" style="width:550px">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a class="linkheader" href="@Url.Action("MyIndex","Order")">Мои заказы</a></li>
+                    }
+                    @if (User.IsInRole("worker") || User.IsInRole("admin"))
+                    {
+                        <li><a class="linkheader" href="@Url.Action("Index","Order")">Заказы</a></li>
+                        <li><a class="linkheader" href="@Url.Action("Index","Countries")">Страны</a></li>
+                        <li><a class="linkheader" href="@Url.Action("Index","Firms")">Фирмы</a></li>
+                    }
+
+                    <li><a class="linkheader" href="@Url.Action("Index","Locations")">Салоны</a></li>
+                </ul>
+
+                <div class="navbar-header" style="width:100px">
+                    <a class="navbar-brand linkheader" id="brandheader" href="@Url.Action("Index","Cars")"><img style="height: 60px; filter: contrast(8000%);" id="BrandImg" src="~/Img/Mainpages/Logo.png"/></a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right mynavright" style="width:550px">
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li><a class="linkheader" href="@Url.Action("Login","Account")"><span class="glyphicon glyphicon-user"></span> LogIn</a></li>
+                        <li><a class="linkheader" href="@Url.Action("Register","Account")"><span class="glyphicon glyphicon-user"></span> SingUp</a></li>
+                    }
+                    else
+                    {
+                        <li><a class="linkheader" href="@Url.Action("Basket","Cars")">Оформить заказ</a></li>
+                        <li><a class="linkheader" style="cursor: default">Login: +@User.Identity.Name  </a> </li>
+                        <li><a class="linkheader" href="@Url.Action("Logoff","Account")"><span class="glyphicon glyphicon-log-in"></span> SignOut</a></li>
+                    }
+                </ul>
+            </div>
+            <div id="kostelforborder"></div>
+        </nav>
+       
+    </header>
+    <div class="">
+        @RenderBody()
+
+
+    </div>
+    <footer class="navbar-fixed-bottom" style="background-color: #fafafa">
+        <hr style="margin:0 0 10px 0" />
+        <div class="container body-content">
+            <p>&copy; @DateTime.Now.Year – приложение ASP</p>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

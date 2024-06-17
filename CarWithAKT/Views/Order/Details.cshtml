@@ -1,0 +1,87 @@
+﻿@model CarWithAKT.Models.Order
+
+@{
+    ViewBag.Title = "Подробности о заказе";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="pagetitle">
+        <h2>Заказ</h2>
+        @if (User.IsInRole("admin") || User.IsInRole("worker"))
+        {
+            <form action="@Url.Action("Index","Order")"><button style="display:block;margin: 0 auto" class="mybutton">Вернутся к списку</button></form>
+        }
+        else
+        {
+            <form action="@Url.Action("MyIndex","Order")"><button style="display:block;margin: 0 auto" class="mybutton">Вернутся к списку</button></form>
+        }
+    </div>
+    <hr />
+    <h3>Авто для покупки</h3>
+    <table class="table">
+        <tr>
+            <th class="basketcell" style="height:37px;">
+                <p style="justify-content: flex-start;padding-left:20px">Авто</p>
+            </th>
+            <th></th>
+            <th class="basketcell" style="height:37px">
+                <p>Цена</p>
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in ViewBag.tdcars)
+        {
+            <tr>
+                <td class="basketcell">
+                    <img style="height:53px;" class="bsctimg" src="@item.Img" alt="@item.Modelname" />
+                </td>
+                <td class="basketcell">
+                    <p style="padding-top:15px"> @item.Name @item.Modelname</p>
+                </td>
+                <td class="basketcell">
+                    <p style="padding-top:15px">@item.Price</p>
+                </td>
+                <td class="basketcell">
+                    <p style="padding-top:15px">@item.Count</p>
+                </td>
+                <td class="basketcell"><p style="padding-top:15px">@(item.Count*item.Price)</p></td>
+
+            </tr>
+        }
+
+
+    </table>
+    <div>
+        <hr />
+        <table>
+            <tr><th>Номер заказа</th><td style="padding-left:50px">@Html.DisplayFor(model => model.Id)</td></tr>
+            <tr><th>Имя заказчика</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.Client.Name)</td></tr>
+            <tr><th>Номер заказчика</th><td style="padding-left: 50px">  @Html.DisplayFor(model => model.Client.Phone)</td></tr>
+            <tr><th>Id работника</th><td style="padding-left: 50px">  @Html.DisplayFor(model => model.Worker.ClientId)</td></tr>
+            <tr><th>Статус заказа</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.Status.Name)</td></tr>
+            <tr><th>Место провидения</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.Location.Name)</td></tr>
+            <tr><th>Дата провидения</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.Date)</td></tr>
+            <tr><th>Дата создания заказа</th><td style="padding-left: 50px"> @Html.DisplayFor(model => model.CreateDate)</td></tr>
+            <tr><th>Полная стоимость</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.FullPrice)</td></tr>
+        </table>
+    </div>
+    <div>
+        @if (User.IsInRole("admin"))
+        {
+            <form action="@Url.Action("Delete","Order",new { id = Model.Id })"><button style="display:block;margin: 0 auto" class="mybutton">Удалить</button></form>
+        }
+        @if (User.IsInRole("worker") && Model.StatusId == 1)
+        {
+            <form action="@Url.Action("Approve","Order",new { id = Model.Id })"><button style="display:block;margin: 0 auto" class="mybutton">Подтвердить</button></form>
+            <a>|</a>
+            <form action="@Url.Action("Canceled","Order",new { id = Model.Id })"><button style="display:block;margin: 0 auto" class="mybutton">Отменить</button></form>
+
+        }
+        else if (User.IsInRole("worker") && Model.StatusId == 2)
+        { 
+            <form action="@Url.Action("Canceled","Order",new { id = Model.Id })"><button style="display:block;margin: 0 auto" class="mybutton">Отменить</button></form>
+        }
+    </div>

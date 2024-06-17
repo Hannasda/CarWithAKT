@@ -1,0 +1,80 @@
+﻿@model List<CarWithAKT.ViewModels.ViewModelForBasket>
+
+@{
+    ViewBag.Title = "Корзина";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>Корзина</h2>
+    @if (Model.Count > 0)
+    {
+        <table class="table mytable">
+            <tr>
+                <th></th>
+                <th>
+                    Авто
+                </th>
+                <th></th>
+                <th>
+                    Цена
+                </th>
+                <th></th>
+                <th style="width:120px;">Всего</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="basketcell"><p>@Html.HiddenFor(modelitem => item.Id)</p></td>
+                    <td class="basketcell" style="padding: 2px">
+                        <img style="height:53px;" class="bsctimg" src="@item.Img" alt="@item.Modelname" />
+                    </td>
+                    <td class="basketcell">
+                        <p>@item.Name @Html.DisplayFor(modelItem => item.Modelname)</p>
+                    </td>
+                    <td class="basketcell">
+                        <p> @Html.DisplayFor(modelItem => item.Price)</p>
+                    </td>
+                    <td class="arrowcounter">
+                        @using (@Html.BeginForm("Basket", "Cars", FormMethod.Get))
+                        {
+                            <button class="mybutton" id="CNTM" name="CNTM" type="submit" value="@item.Id"><</button>
+                        }
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Count)
+                        </p>
+                        @using (@Html.BeginForm("Basket", "Cars", FormMethod.Get))
+                        {
+                            <button class="mybutton" id="CNTP" name="CNTP" type="submit" value="@item.Id">></button>
+                        }
+                    </td>
+                    <td class="basketcell">
+                        <p>
+                            @(item.Count * item.Price)
+                        </p>
+                    </td>
+                    <td id="bsktbtn">
+                        @using (@Html.BeginForm("Basket", "Cars", FormMethod.Get))
+                        {
+                            <button id="Bas" name="Bas" type="submit" value="@item.Id" class="mybutton">
+                                <div>Убрать из корзины</div>
+                            </button>
+                        }
+                    </td>
+                </tr>
+            }
+
+
+
+
+        </table>
+
+
+        <form action="@Url.Action("Create", "Order")"> <button style="display:block;margin: 0 auto" class="mybutton">Оформить заказ</button></form>
+    }
+    else
+    {
+        <a href="@Url.Action("Index", "Cars")" style="display:block;margin: 0 auto" class="mybutton basketempty">Корзина пуста</a>
+    }
+</div>>

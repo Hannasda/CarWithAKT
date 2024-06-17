@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CarWithAKT.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="pagetitle">
+        <h2>Мои заказы</h2>
+    </div>
+    <table class="table">
+        <tr>
+            <th>
+                Id клиента
+            </th>
+            <th>
+                Имя клиента
+            </th>
+            <th>
+                Статус заказа
+            </th>
+            <th>
+                Id админа
+            </th>
+            <th>
+                Дата тестдрайва
+            </th>
+            <th>
+                Дата создания
+            </th>
+            <th>
+                Полная стоимость
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClientId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WorkerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullPrice)
+        </td>
+        <td>
+            @if (item.StatusId != 3)
+            {
+            <td><form action="@Url.Action("Canceled","Order",new { id = item.Id })"><button style="width:110px; display:block;margin: 0 auto" class="mybutton">Отменить</button></form></td>
+        }
+            </td>
+    <td>
+        <form action="@Url.Action("Details","Order",new { id = item.Id })"><button style="width: 110px; display: block; margin: 0 auto " class="mybutton">Подробнее</button></form>
+    </td>
+        </tr>
+        }
+
+    </table>
+    </div>

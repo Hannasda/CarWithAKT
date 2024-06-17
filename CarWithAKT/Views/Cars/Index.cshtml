@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CarWithAKT.Models.Car>
+
+@{
+    ViewBag.Title = "Каталог авто";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<img class="mainimg" src="~/Img/Mainpages/mainimg.jpeg"/>
+<div class="container">
+    <div class="pagetitle">
+        <h2>Каталог авто</h2>
+
+        @if (User.IsInRole("admin") || User.IsInRole("worker"))
+        {
+                <form action="@Url.Action("Create","Cars")"><button style="display:block;margin: 0 auto" class="mybutton">Создать новое авто</button></form>
+        }
+    </div>
+    <hr />
+    <div class="row mt-15 mb-2">
+        @foreach (var item in Model)
+        {
+            <a href="@Url.Action("Details", "Cars", new { id = item.Id })">
+                <div class="col-lg-4 katcar">
+                    <div class="forkatimg"><img class="" src="@item.Img" alt="@item.Modelname" /></div>
+                    <h4>@item.Firm.Name @item.Modelname</h4>
+                    <p>Цена: @item.Price</p>
+
+                    @using (@Html.BeginForm("Index", "Cars", FormMethod.Get))
+                    {
+                        <button id="Bas" name="Bas" type="submit" value="@item.Id" class="mybutton" style="width:160px">
+                            @if (ViewBag.Bas != null && ViewBag.Bas.Count != 0)
+                            {
+                                foreach (var F in ViewBag.Bas)
+                                {
+                                    if (item.Id == F.Car.Id)
+                                    {
+                                        <div>Убрать из корзины</div>
+                                        break;
+                                    }
+                                    if (ViewBag.Bas[ViewBag.Bas.Count - 1] == F)
+                                    {
+                                        <div>Добавить в корзину</div>
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <div>Добавить в корзину</div>
+                            }
+                        </button>
+                        <input type="hidden"/>
+                    }
+
+
+
+                </div>
+            </a>
+        }
+    </div>
+
+</div>
+
+<script>let cords = ['scrollX', 'scrollY'];
+    // save scroll piosition in localStorage
+    window.addEventListener('unload', e => cords.forEach(cord => localStorage[cord] = window[cord]));
+    // add event on load page
+    window.addEventListener('load', e => {
+        // if localStorage have data
+        if (localStorage[cords[0]]) {
+            // scroll at save cords
+            window.scroll(...cords.map(cord => localStorage[cord]));
+            // remove data in localStorage
+            cords.forEach(cord => localStorage.removeItem(cord));
+        }
+    });</script>

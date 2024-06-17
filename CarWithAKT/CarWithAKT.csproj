@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C7407DC-C86B-4007-B76B-F243707FE551}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarWithAKT</RootNamespace>
+    <AssemblyName>CarWithAKT</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44311</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Sqlite, Version=6.0.31.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Sqlite.Core.6.0.31\lib\netstandard2.0\Microsoft.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite.CodeFirst, Version=1.7.0.36, Culture=neutral, PublicKeyToken=eb96ba0a78d831a7, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLite.CodeFirst.1.7.0.36\lib\net45\SQLite.CodeFirst.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.1.2.1721, Culture=neutral, PublicKeyToken=8226ea5df37bcae9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.2.1.2\lib\net461\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core, Version=2.1.2.1721, Culture=neutral, PublicKeyToken=1488e028ca7ab535, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.core.2.1.2\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.provider.dynamic_cdecl, Version=2.1.2.1721, Culture=neutral, PublicKeyToken=b68184102cba0b3b, processorArchitecture=MSIL">
+      <HintPath>..\packages\SQLitePCLRaw.provider.dynamic_cdecl.2.1.2\lib\netstandard2.0\SQLitePCLRaw.provider.dynamic_cdecl.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarsController.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
+    <Compile Include="Controllers\FirmsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Auth.cs" />
+    <Compile Include="Models\Basket.cs" />
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\CarsOnOrder.cs" />
+    <Compile Include="Models\CarWithAKTContext.cs" />
+    <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Firm.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\Worker.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\CustomRoleProvider.cs" />
+    <Compile Include="ViewModels\ViewModelForBasket.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Img\Cars\1.jpg" />
+    <Content Include="Img\Cars\2.jpg" />
+    <Content Include="Img\Cars\3.jpg" />
+    <Content Include="Img\Cars\4.jpg" />
+    <Content Include="Img\Flags\ad.png" />
+    <Content Include="Img\Flags\ae.png" />
+    <Content Include="Img\Flags\af.png" />
+    <Content Include="Img\Flags\ag.png" />
+    <Content Include="Img\Flags\ai.png" />
+    <Content Include="Img\Flags\al.png" />
+    <Content Include="Img\Flags\am.png" />
+    <Content Include="Img\Flags\ao.png" />
+    <Content Include="Img\Flags\aq.png" />
+    <Content Include="Img\Flags\ar.png" />
+    <Content Include="Img\Flags\as.png" />
+    <Content Include="Img\Flags\at.png" />
+    <Content Include="Img\Flags\au.png" />
+    <Content Include="Img\Flags\aw.png" />
+    <Content Include="Img\Flags\ax.png" />
+    <Content Include="Img\Flags\az.png" />
+    <Content Include="Img\Flags\ba.png" />
+    <Content Include="Img\Flags\bb.png" />
+    <Content Include="Img\Flags\bd.png" />
+    <Content Include="Img\Flags\be.png" />
+    <Content Include="Img\Flags\bf.png" />
+    <Content Include="Img\Flags\bg.png" />
+    <Content Include="Img\Flags\bh.png" />
+    <Content Include="Img\Flags\bi.png" />
+    <Content Include="Img\Flags\bj.png" />
+    <Content Include="Img\Flags\bl.png" />
+    <Content Include="Img\Flags\bm.png" />
+    <Content Include="Img\Flags\bn.png" />
+    <Content Include="Img\Flags\bo.png" />
+    <Content Include="Img\Flags\bq.png" />
+    <Content Include="Img\Flags\br.png" />
+    <Content Include="Img\Flags\bs.png" />
+    <Content Include="Img\Flags\bt.png" />
+    <Content Include="Img\Flags\bv.png" />
+    <Content Include="Img\Flags\bw.png" />
+    <Content Include="Img\Flags\by.png" />
+    <Content Include="Img\Flags\bz.png" />
+    <Content Include="Img\Flags\ca.png" />
+    <Content Include="Img\Flags\cc.png" />
+    <Content Include="Img\Flags\cd.png" />
+    <Content Include="Img\Flags\cf.png" />
+    <Content Include="Img\Flags\cg.png" />
+    <Content Include="Img\Flags\ch.png" />
+    <Content Include="Img\Flags\ci.png" />
+    <Content Include="Img\Flags\ck.png" />
+    <Content Include="Img\Flags\cl.png" />
+    <Content Include="Img\Flags\cm.png" />
+    <Content Include="Img\Flags\cn.png" />
+    <Content Include="Img\Flags\co.png" />
+    <Content Include="Img\Flags\cr.png" />
+    <Content Include="Img\Flags\cu.png" />
+    <Content Include="Img\Flags\cv.png" />
+    <Content Include="Img\Flags\cw.png" />
+    <Content Include="Img\Flags\cx.png" />
+    <Content Include="Img\Flags\cy.png" />
+    <Content Include="Img\Flags\cz.png" />
+    <Content Include="Img\Flags\de.png" />
+    <Content Include="Img\Flags\dj.png" />
+    <Content Include="Img\Flags\dk.png" />
+    <Content Include="Img\Flags\dm.png" />
+    <Content Include="Img\Flags\do.png" />
+    <Content Include="Img\Flags\dz.png" />
+    <Content Include="Img\Flags\ec.png" />
+    <Content Include="Img\Flags\ee.png" />
+    <Content Include="Img\Flags\eg.png" />
+    <Content Include="Img\Flags\eh.png" />
+    <Content Include="Img\Flags\er.png" />
+    <Content Include="Img\Flags\es.png" />
+    <Content Include="Img\Flags\et.png" />
+    <Content Include="Img\Flags\fi.png" />
+    <Content Include="Img\Flags\fj.png" />
+    <Content Include="Img\Flags\fk.png" />
+    <Content Include="Img\Flags\fm.png" />
+    <Content Include="Img\Flags\fo.png" />
+    <Content Include="Img\Flags\fr.png" />
+    <Content Include="Img\Flags\ga.png" />
+    <Content Include="Img\Flags\gb-eng.png" />
+    <Content Include="Img\Flags\gb-nir.png" />
+    <Content Include="Img\Flags\gb-sct.png" />
+    <Content Include="Img\Flags\gb-wls.png" />
+    <Content Include="Img\Flags\gb.png" />
+    <Content Include="Img\Flags\gd.png" />
+    <Content Include="Img\Flags\ge.png" />
+    <Content Include="Img\Flags\gf.png" />
+    <Content Include="Img\Flags\gg.png" />
+    <Content Include="Img\Flags\gh.png" />
+    <Content Include="Img\Flags\gi.png" />
+    <Content Include="Img\Flags\gl.png" />
+    <Content Include="Img\Flags\gm.png" />
+    <Content Include="Img\Flags\gn.png" />
+    <Content Include="Img\Flags\gp.png" />
+    <Content Include="Img\Flags\gq.png" />
+    <Content Include="Img\Flags\gr.png" />
+    <Content Include="Img\Flags\gs.png" />
+    <Content Include="Img\Flags\gt.png" />
+    <Content Include="Img\Flags\gu.png" />
+    <Content Include="Img\Flags\gw.png" />
+    <Content Include="Img\Flags\gy.png" />
+    <Content Include="Img\Flags\hk.png" />
+    <Content Include="Img\Flags\hm.png" />
+    <Content Include="Img\Flags\hn.png" />
+    <Content Include="Img\Flags\hr.png" />
+    <Content Include="Img\Flags\ht.png" />
+    <Content Include="Img\Flags\hu.png" />
+    <Content Include="Img\Flags\id.png" />
+    <Content Include="Img\Flags\ie.png" />
+    <Content Include="Img\Flags\il.png" />
+    <Content Include="Img\Flags\im.png" />
+    <Content Include="Img\Flags\in.png" />
+    <Content Include="Img\Flags\io.png" />
+    <Content Include="Img\Flags\iq.png" />
+    <Content Include="Img\Flags\ir.png" />
+    <Content Include="Img\Flags\is.png" />
+    <Content Include="Img\Flags\it.png" />
+    <Content Include="Img\Flags\je.png" />
+    <Content Include="Img\Flags\jm.png" />
+    <Content Include="Img\Flags\jo.png" />
+    <Content Include="Img\Flags\jp.png" />
+    <Content Include="Img\Flags\ke.png" />
+    <Content Include="Img\Flags\kg.png" />
+    <Content Include="Img\Flags\kh.png" />
+    <Content Include="Img\Flags\ki.png" />
+    <Content Include="Img\Flags\km.png" />
+    <Content Include="Img\Flags\kn.png" />
+    <Content Include="Img\Flags\kp.png" />
+    <Content Include="Img\Flags\kr.png" />
+    <Content Include="Img\Flags\kw.png" />
+    <Content Include="Img\Flags\ky.png" />
+    <Content Include="Img\Flags\kz.png" />
+    <Content Include="Img\Flags\la.png" />
+    <Content Include="Img\Flags\lb.png" />
+    <Content Include="Img\Flags\lc.png" />
+    <Content Include="Img\Flags\li.png" />
+    <Content Include="Img\Flags\lk.png" />
+    <Content Include="Img\Flags\lr.png" />
+    <Content Include="Img\Flags\ls.png" />
+    <Content Include="Img\Flags\lt.png" />
+    <Content Include="Img\Flags\lu.png" />
+    <Content Include="Img\Flags\lv.png" />
+    <Content Include="Img\Flags\ly.png" />
+    <Content Include="Img\Flags\ma.png" />
+    <Content Include="Img\Flags\mc.png" />
+    <Content Include="Img\Flags\md.png" />
+    <Content Include="Img\Flags\me.png" />
+    <Content Include="Img\Flags\mf.png" />
+    <Content Include="Img\Flags\mg.png" />
+    <Content Include="Img\Flags\mh.png" />
+    <Content Include="Img\Flags\mk.png" />
+    <Content Include="Img\Flags\ml.png" />
+    <Content Include="Img\Flags\mm.png" />
+    <Content Include="Img\Flags\mn.png" />
+    <Content Include="Img\Flags\mo.png" />
+    <Content Include="Img\Flags\mp.png" />
+    <Content Include="Img\Flags\mq.png" />
+    <Content Include="Img\Flags\mr.png" />
+    <Content Include="Img\Flags\ms.png" />
+    <Content Include="Img\Flags\mt.png" />
+    <Content Include="Img\Flags\mu.png" />
+    <Content Include="Img\Flags\mv.png" />
+    <Content Include="Img\Flags\mw.png" />
+    <Content Include="Img\Flags\mx.png" />
+    <Content Include="Img\Flags\my.png" />
+    <Content Include="Img\Flags\mz.png" />
+    <Content Include="Img\Flags\na.png" />
+    <Content Include="Img\Flags\nc.png" />
+    <Content Include="Img\Flags\ne.png" />
+    <Content Include="Img\Flags\nf.png" />
+    <Content Include="Img\Flags\ng.png" />
+    <Content Include="Img\Flags\ni.png" />
+    <Content Include="Img\Flags\nl.png" />
+    <Content Include="Img\Flags\no.png" />
+    <Content Include="Img\Flags\np.png" />
+    <Content Include="Img\Flags\nr.png" />
+    <Content Include="Img\Flags\nu.png" />
+    <Content Include="Img\Flags\nz.png" />
+    <Content Include="Img\Flags\om.png" />
+    <Content Include="Img\Flags\pa.png" />
+    <Content Include="Img\Flags\pe.png" />
+    <Content Include="Img\Flags\pf.png" />
+    <Content Include="Img\Flags\pg.png" />
+    <Content Include="Img\Flags\ph.png" />
+    <Content Include="Img\Flags\pk.png" />
+    <Content Include="Img\Flags\pl.png" />
+    <Content Include="Img\Flags\pm.png" />
+    <Content Include="Img\Flags\pn.png" />
+    <Content Include="Img\Flags\pr.png" />
+    <Content Include="Img\Flags\ps.png" />
+    <Content Include="Img\Flags\pt.png" />
+    <Content Include="Img\Flags\pw.png" />
+    <Content Include="Img\Flags\py.png" />
+    <Content Include="Img\Flags\qa.png" />
+    <Content Include="Img\Flags\re.png" />
+    <Content Include="Img\Flags\ro.png" />
+    <Content Include="Img\Flags\rs.png" />
+    <Content Include="Img\Flags\ru.png" />
+    <Content Include="Img\Flags\rw.png" />
+    <Content Include="Img\Flags\sa.png" />
+    <Content Include="Img\Flags\sb.png" />
+    <Content Include="Img\Flags\sc.png" />
+    <Content Include="Img\Flags\sd.png" />
+    <Content Include="Img\Flags\se.png" />
+    <Content Include="Img\Flags\sg.png" />
+    <Content Include="Img\Flags\sh.png" />
+    <Content Include="Img\Flags\si.png" />
+    <Content Include="Img\Flags\sj.png" />
+    <Content Include="Img\Flags\sk.png" />
+    <Content Include="Img\Flags\sl.png" />
+    <Content Include="Img\Flags\sm.png" />
+    <Content Include="Img\Flags\sn.png" />
+    <Content Include="Img\Flags\so.png" />
+    <Content Include="Img\Flags\sr.png" />
+    <Content Include="Img\Flags\ss.png" />
+    <Content Include="Img\Flags\st.png" />
+    <Content Include="Img\Flags\sv.png" />
+    <Content Include="Img\Flags\sx.png" />
+    <Content Include="Img\Flags\sy.png" />
+    <Content Include="Img\Flags\sz.png" />
+    <Content Include="Img\Flags\tc.png" />
+    <Content Include="Img\Flags\td.png" />
+    <Content Include="Img\Flags\tf.png" />
+    <Content Include="Img\Flags\tg.png" />
+    <Content Include="Img\Flags\th.png" />
+    <Content Include="Img\Flags\tj.png" />
+    <Content Include="Img\Flags\tk.png" />
+    <Content Include="Img\Flags\tl.png" />
+    <Content Include="Img\Flags\tm.png" />
+    <Content Include="Img\Flags\tn.png" />
+    <Content Include="Img\Flags\to.png" />
+    <Content Include="Img\Flags\tr.png" />
+    <Content Include="Img\Flags\tt.png" />
+    <Content Include="Img\Flags\tv.png" />
+    <Content Include="Img\Flags\tw.png" />
+    <Content Include="Img\Flags\tz.png" />
+    <Content Include="Img\Flags\ua.png" />
+    <Content Include="Img\Flags\ug.png" />
+    <Content Include="Img\Flags\um.png" />
+    <Content Include="Img\Flags\us.png" />
+    <Content Include="Img\Flags\uy.png" />
+    <Content Include="Img\Flags\uz.png" />
+    <Content Include="Img\Flags\va.png" />
+    <Content Include="Img\Flags\vc.png" />
+    <Content Include="Img\Flags\ve.png" />
+    <Content Include="Img\Flags\vg.png" />
+    <Content Include="Img\Flags\vi.png" />
+    <Content Include="Img\Flags\vn.png" />
+    <Content Include="Img\Flags\vu.png" />
+    <Content Include="Img\Flags\wf.png" />
+    <Content Include="Img\Flags\ws.png" />
+    <Content Include="Img\Flags\xk.png" />
+    <Content Include="Img\Flags\ye.png" />
+    <Content Include="Img\Flags\yt.png" />
+    <Content Include="Img\Flags\za.png" />
+    <Content Include="Img\Flags\zm.png" />
+    <Content Include="Img\Flags\zw.png" />
+    <Content Include="Img\Mainpages\Logo.png" />
+    <Content Include="Img\Mainpages\mainimg.jpeg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Cars\Basket.cshtml" />
+    <Content Include="Views\Cars\Create.cshtml" />
+    <Content Include="Views\Cars\Edit.cshtml" />
+    <Content Include="Views\Cars\Index.cshtml" />
+    <Content Include="Views\Cars\Details.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\MyIndex.cshtml" />
+    <Content Include="Views\Firms\Create.cshtml" />
+    <Content Include="Views\Firms\Edit.cshtml" />
+    <Content Include="Views\Firms\Index.cshtml" />
+    <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\Locations\AdminIndex.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Countries\Create.cshtml" />
+    <Content Include="Views\Countries\Index.cshtml" />
+    <Content Include="Views\Countries\AdminIndex.cshtml" />
+    <Content Include="Views\Countries\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52795</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44311/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

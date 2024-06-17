@@ -1,0 +1,81 @@
+﻿@model CarWithAKT.Models.Car
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="pagetitle">
+        <h2>Подробности о товаре</h2>
+        <form action="@Url.Action("Index","Cars")"><button style="display:block;margin: 0 auto" class="mybutton">Вернутся к списку</button></form>
+    </div>
+    <hr />
+    <div class="detailshead">
+        <div class="detailsimg"><img class="img-thumbnail" src="@ViewBag.imag" alt="@Model.Modelname" width="300" height="200" /></div>
+        <div class="deteilsinfo">
+            <div class="detailsmodel">
+                @Html.DisplayFor(model => model.Firm.Name)
+                @Html.DisplayFor(model => model.Modelname)
+            </div>
+            <div class="detailsprice">
+                Цена: @Html.DisplayFor(model => model.Price)
+            </div>
+            @using (@Html.BeginForm("Details", "Cars", Model.Id, FormMethod.Get))
+            {
+                <button id="Bas" name="Bas" type="submit" value="@Model.Id" class="mybutton buttondet" style="margin-top:160px;">
+                    @if (ViewBag.Bas != null && ViewBag.Bas.Count != 0)
+                    {
+                        foreach (var F in ViewBag.Bas)
+                        {
+                            if (Model.Id == F.Car.Id)
+                            {
+                                <div>Убрать из корзины</div>
+                                break;
+                            }
+                            if (ViewBag.Bas[ViewBag.Bas.Count - 1] == F)
+                            {
+                                <div>Добавить в корзину</div>
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <div>Добавить в корзину</div>
+                    }
+                </button>
+            }
+            <div />
+        </div>
+        </div>
+       
+    </div>
+    </div>
+    
+    
+        <table class="table" id="dettable">
+            <tr><th>Цвет</th><td>  @Html.DisplayFor(model => model.Color)</td></tr>
+            <tr><th>Тип кузова</th><td>@Html.DisplayFor(model => model.Body_type)</td></tr>
+            <tr><th>Тип топлива</th><td>@Html.DisplayFor(model => model.Fuel_type)</td></tr>
+            <tr><th>Расход топлива</th><td>@Html.DisplayFor(model => model.Fuel_use)</td></tr>
+            <tr><th>Объём двигателя</th><td>@Html.DisplayFor(model => model.Engine_cap)</td></tr>
+            <tr><th>Масса</th><td> @Html.DisplayFor(model => model.Mass)</td></tr>
+            <tr><th>Тип двигателя</th><td>@Html.DisplayFor(model => model.Engine_type)</td></tr>
+            <tr><th>Количество мест</th><td>@Html.DisplayFor(model => model.Seats_num)</td></tr>
+            <tr><th>Количество дверей</th><td>@Html.DisplayFor(model => model.Door_num)</td></tr>
+            <tr><th>Мощность</th><td> @Html.DisplayFor(model => model.Power)</td></tr>
+            <tr><th>Водительское сиденье</th><td>@Html.DisplayFor(model => model.Driver_type)</td></tr>
+            <tr><th>Привод</th><td>@Html.DisplayFor(model => model.Transmission_type)</td></tr>
+
+
+        </table>
+    
+
+    <div id="botbtn">
+        @if (User.IsInRole("admin") || (User.IsInRole("worker")))
+        {
+            <form action="@Url.Action("Edit", "Cars", new { id = Model.Id })"> <button class="mybutton">Изменить</button></form>
+            <form style="margin-left:5px;" action="@Url.Action("Delete", "Cars", new { id = Model.Id })"> <button class="mybutton">Удалить</button></form>
+        }
+    </div>
+</div>

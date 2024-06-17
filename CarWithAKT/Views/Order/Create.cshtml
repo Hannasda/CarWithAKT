@@ -1,0 +1,89 @@
+﻿@model CarWithAKT.Models.Order
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="pagetitle" style="display:flex;flex-direction:column;justify-content:center;">
+        <h2 >Новый заказ</h2>
+        <form action="@Url.Action("Index", "Cars")"> <button style="display:block;margin: 0 auto" class="mybutton">Вернутся к списку</button></form>
+    </div>
+    <hr />
+    <h3>Авто для покупки</h3>
+    <table class="table mytable">
+        <tr>
+            <th>
+                Авто
+            </th>
+            <th></th>
+            <th>
+                Цена
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+        </tr>
+
+        @foreach (var item in ViewBag.tdcars)
+        {
+            <tr>
+                <td class="basketcell">
+                    <img style="height:53px;" class="bsctimg" src="@item.Img" alt="@item.Modelname" />
+                </td>
+                <td class="basketcell">
+                    <p style="padding-top:15px"> @item.Name @item.Modelname</p>
+                </td>
+                <td class="basketcell">
+                    <p style="padding-top:15px">@item.Price</p>
+                </td>
+                <td class="basketcell">
+                    <p style="padding-top:15px">@item.Count</p>
+                </td>
+                <td class="basketcell"><p style="padding-top:15px">@(item.Count*item.Price)</p></td>
+
+            </tr>
+        }
+
+
+    </table>
+    <div class="totalprice">
+        Цена заказа: @ViewBag.flprs
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <hr />
+            @Html.HiddenFor(model => model.Id)
+
+        <div class="choose">
+            <label for="Locations">Выберете салон:</label>
+            @Html.DropDownListFor(model => model.LocationId, ViewBag.loc as SelectList)
+        </div>
+
+        <div class="choose">
+            <p>Выберите желаемую дату:</p>
+            <div>
+                    @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control", type = "date", min = ViewBag.dt } })
+                    @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+            <div style="display:flex">
+                <div style="display:block; margin: 0 auto;">
+                    <input type="submit" value="Создать" class="mybutton" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</div>
