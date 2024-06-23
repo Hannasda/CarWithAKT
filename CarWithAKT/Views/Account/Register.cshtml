@@ -20,23 +20,23 @@
             @Html.ValidationSummary(true)
             <hr />
             <div>
-                <p>Имя</p>
+                <p>Ім`я</p>
                 @Html.EditorFor(model => model.Name)
                 @Html.ValidationMessageFor(model => model.Name)
             </div>
 
             <div>
-                <p>Фамилия</p>
+                <p>Прізвище</p>
                 @Html.EditorFor(model => model.Surname)
                 @Html.ValidationMessageFor(model => model.Surname)
             </div>
             <div>
-                <p>Адресс електронной почты</p>
+                <p>Адреса електронної пошти</p>
                 @Html.EditorFor(model => model.Email)
                 @Html.ValidationMessageFor(model => model.Email)
             </div>
             <div>
-                <p>Номер телефонa</p>
+                <p>Номер телефону</p>
                 @Html.EditorFor(model => model.Phone)
                 @Html.ValidationMessageFor(model => model.Phone)
             </div>
@@ -46,12 +46,12 @@
                 @Html.ValidationMessageFor(model => model.Password)
             </div>
             <div>
-                <p>Повторите пароль</p>
+                <p>Повторити пароль</p>
                 @Html.EditorFor(model => model.ConfirmPassword)
                 @Html.ValidationMessageFor(model => model.ConfirmPassword)
             </div>
 
-            <button type="submit" value="Sign up" class="mybutton">Зарегестрироваться</button>
+            <button type="submit" value="Sign up" class="mybutton">Зареєструватись</button>
         </div>
     }
 

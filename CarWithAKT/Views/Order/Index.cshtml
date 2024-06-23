@@ -6,30 +6,31 @@
 }
 <div class="container">
     <div class="pagetitle">
-        <h2>Все заказы</h2>
+        <h2>Всі замовлення</h2>
     </div>
     <table class="table">
         <tr>
             <th>
-                Id клиента
+                Id клієнта
             </th>
             <th>
-                Имя клиента
+                Ім`я клієнта
+                D:\ХНУРЕ\МППС\AKT-main\CarWithAKT\CarWithAKT\Img\Mainpages\Logo.jpeg
             </th>
             <th>
-                Статус заказа
+                Статус замовлення
             </th>
             <th>
-                Id админа
+                Id адміна
             </th>
             <th>
-                Дата передачи авто
+                Дата передачі авто
             </th>
             <th>
-                Дата создания
+                Дата створення
             </th>
             <th>
-                Полная стоимость
+                Повна ціна
             </th>
             <th></th>
             <th></th>
@@ -63,25 +64,25 @@
                 
                 @if (User.IsInRole("worker") && item.StatusId == 1)
                 {
-                <td><form action="@Url.Action("Approve","Order",new { id = item.Id })"><button style="width: 110px; display: block; margin: 0 auto" class="mybutton">Подтвердить</button></form></td>
+                <td><form action="@Url.Action("Approve","Order",new { id = item.Id })"><button style="width: 110px; display: block; margin: 0 auto" class="mybutton">Підтвердити</button></form></td>
                         
-                <td><form action="@Url.Action("Canceled","Order",new { id = item.Id })"><button style="width: 110px; display: block; margin: 0 auto" class="mybutton">Отменить</button></form></td>
+                <td><form action="@Url.Action("Canceled","Order",new { id = item.Id })"><button style="width: 110px; display: block; margin: 0 auto" class="mybutton">Відмінити</button></form></td>
 
                 }
                               else if (User.IsInRole("worker") && item.StatusId == 2)
                               {
-                              <td><form action="@Url.Action("Canceled","Order",new { id = item.Id })"><button style="width:110px; display:block;margin: 0 auto" class="mybutton">Отменить</button></form></td>
+                              <td><form action="@Url.Action("Canceled","Order",new { id = item.Id })"><button style="width:110px; display:block;margin: 0 auto" class="mybutton">Відмінити</button></form></td>
                               }
                                           
                     @if (User.IsInRole("admin") && item.StatusId == 1)
                     {
             <td>
-                <form action="@Url.Action("Delete","Order",new { id = item.Id })"><button style="width: 110px; display: block; margin: 0 auto " class="mybutton">Удалить</button></form>
+                <form action="@Url.Action("Delete","Order",new { id = item.Id })"><button style="width: 110px; display: block; margin: 0 auto " class="mybutton">Видалити</button></form>
             </td>
                 }
             
                 <td>
-                    <form action="@Url.Action("Details","Order",new { id = item.Id })"><button style="width: 110px; display: block; margin: 0 auto " class="mybutton">Подробнее</button></form>
+                    <form action="@Url.Action("Details","Order",new { id = item.Id })"><button style="width: 110px; display: block; margin: 0 auto " class="mybutton">Детальніше</button></form>
                 </td>
             </tr>
         }

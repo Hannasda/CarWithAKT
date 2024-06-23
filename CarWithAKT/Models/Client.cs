@@ -9,16 +9,16 @@ namespace CarWithAKT.Models
     public class Client
     {
         public int Id { set; get; }
-        [Required(ErrorMessage = "Введите пароль")]
+        [Required(ErrorMessage = "Введіть пароль")]
         [DataType(DataType.Password)]
         public string Password { set; get; }
-        [Required(ErrorMessage = "Введите имя")]
+        [Required(ErrorMessage = "Введіть ім`я")]
         public string Name { set; get; }
-        [Required(ErrorMessage = "Введите фамилию")]
+        [Required(ErrorMessage = "Введіть прізвище")]
         public string Surname { set; get; }
-        [Required(ErrorMessage = "Введите номер телефона")]
+        [Required(ErrorMessage = "Введіть номер телефону")]
         public string Phone { set; get; }
-        [Required(ErrorMessage = "Введите адресс електронной почты")]
+        [Required(ErrorMessage = "Введіть адресу електронної пошти")]
         public string Email { set; get; }
         public int RoleId { set; get; }
         public Role Role { set; get; }

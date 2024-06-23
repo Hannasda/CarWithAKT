@@ -18,20 +18,20 @@
                 <ul class="nav navbar-nav navbar-left" style="width:550px">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li><a class="linkheader" href="@Url.Action("MyIndex","Order")">Мои заказы</a></li>
+                        <li><a class="linkheader" href="@Url.Action("MyIndex","Order")">Мої замовлення</a></li>
                     }
                     @if (User.IsInRole("worker") || User.IsInRole("admin"))
                     {
-                        <li><a class="linkheader" href="@Url.Action("Index","Order")">Заказы</a></li>
-                        <li><a class="linkheader" href="@Url.Action("Index","Countries")">Страны</a></li>
-                        <li><a class="linkheader" href="@Url.Action("Index","Firms")">Фирмы</a></li>
+                        <li><a class="linkheader" href="@Url.Action("Index","Order")">Замовлення</a></li>
+                        <li><a class="linkheader" href="@Url.Action("Index","Countries")">Країни</a></li>
+                        <li><a class="linkheader" href="@Url.Action("Index","Firms")">Фірми</a></li>
                     }
 
-                    <li><a class="linkheader" href="@Url.Action("Index","Locations")">Салоны</a></li>
+                    <li><a class="linkheader" href="@Url.Action("Index","Locations")">Салони</a></li>
                 </ul>
 
                 <div class="navbar-header" style="width:100px">
-                    <a class="navbar-brand linkheader" id="brandheader" href="@Url.Action("Index","Cars")"><img style="height: 60px; filter: contrast(8000%);" id="BrandImg" src="~/Img/Mainpages/Logo.png"/></a>
+                    <a class="navbar-brand linkheader" id="brandheader" href="@Url.Action("Index","Cars")"><img style="height: 60px; filter: contrast(8000%);" id="BrandImg" src="~/Img/Mainpages/Logo.jpeg"/></a>
                 </div>
 
                 <ul class="nav navbar-nav navbar-right mynavright" style="width:550px">
@@ -42,7 +42,7 @@
                     }
                     else
                     {
-                        <li><a class="linkheader" href="@Url.Action("Basket","Cars")">Оформить заказ</a></li>
+                        <li><a class="linkheader" href="@Url.Action("Basket","Cars")">Оформити замовлення</a></li>
                         <li><a class="linkheader" style="cursor: default">Login: +@User.Identity.Name  </a> </li>
                         <li><a class="linkheader" href="@Url.Action("Logoff","Account")"><span class="glyphicon glyphicon-log-in"></span> SignOut</a></li>
                     }

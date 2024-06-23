@@ -449,7 +449,7 @@
     <Content Include="Img\Flags\za.png" />
     <Content Include="Img\Flags\zm.png" />
     <Content Include="Img\Flags\zw.png" />
-    <Content Include="Img\Mainpages\Logo.png" />
+    <Content Include="Img\Mainpages\Logo.jpeg" />
     <Content Include="Img\Mainpages\mainimg.jpeg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

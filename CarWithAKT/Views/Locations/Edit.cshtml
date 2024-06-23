@@ -1,13 +1,13 @@
 ﻿@model CarWithAKT.Models.Location
 
 @{
-    ViewBag.Title = "Редактирование салона";
+    ViewBag.Title = "Редагування салона";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container">
     <div class="pagetitle">
-        <h2>Редактирование салона</h2>
+        <h2>Редагування салона</h2>
         <form action="@Url.Action("Index","Locations")"><button style="display:block;margin: 0 auto" class="mybutton">Вернутся к списку</button></form>
     </div>
 
@@ -20,7 +20,7 @@
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group" style="display:flex;flex-direction:column;justify-content:center; width:500px;align-items:center">
-                <p>Название салона:</p>
+                <p>Назва салона:</p>
                 <div class="col-md-10" style="width:100%;display:flex;justify-content:center">
                     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-                <button type="submit" value="Save" class="mybutton">Сохранить</button>
+                <button type="submit" value="Save" class="mybutton">Зберегти</button>
             </div>
         </div>
     }

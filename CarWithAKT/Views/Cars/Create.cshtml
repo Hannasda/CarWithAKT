@@ -1,13 +1,13 @@
 ﻿@model CarWithAKT.Models.Car
 
 @{
-    ViewBag.Title = "Новое авто";
+    ViewBag.Title = "Нове авто";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div style="display:flex;justify-content:space-between">
     <h2>Новое авто</h2>
-    @Html.ActionLink("Вернутся к списку", "Index", null, new { @class = "btn btn-warning ", @style = "margin-top:15px;height:40px;color:#fff;background-color:#212529;border-color:#212529;" })
+    @Html.ActionLink("Повернутись до списку", "Index", null, new { @class = "btn btn-warning ", @style = "margin-top:15px;height:40px;color:#fff;background-color:#212529;border-color:#212529;" })
 </div>
 
 @using (Html.BeginForm())
@@ -47,63 +47,63 @@
                 @Html.ValidationMessageFor(model => model.Fuel_use, "", new { @class = "text-danger" })
             </div>
         </div>
-        Объём двигателя:
+        Обєм двигуна:
         <div class="form-group">
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Engine_cap, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Engine_cap, "", new { @class = "text-danger" })
             </div>
         </div>
-        Масса авто:
+        Маса авто:
         <div class="form-group">
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Mass, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Mass, "", new { @class = "text-danger" })
             </div>
         </div>
-        Тип двигателя:
+        Тип двигуна:
         <div class="form-group">
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Engine_type, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Engine_type, "", new { @class = "text-danger" })
             </div>
         </div>
-        Кличество мест:
+        Кількість місць:
         <div class="form-group">
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Seats_num, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Seats_num, "", new { @class = "text-danger" })
             </div>
         </div>
-        Количество дверей:
+        Кількість дверей:
         <div class="form-group">
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Door_num, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Door_num, "", new { @class = "text-danger" })
             </div>
         </div>
-        Мощность:
+        Потужність:
         <div class="form-group">
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Power, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Power, "", new { @class = "text-danger" })
             </div>
         </div>
-        Расположение водительского сиденья: (Право/Лево)
+        Місце знаходження водійського сидіння: (Право/Ліво)
         <div class="form-group">
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Driver_type, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Driver_type, "", new { @class = "text-danger" })
             </div>
         </div>
-        Привод:
+        Привід:
         <div class="form-group">
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Transmission_type, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Transmission_type, "", new { @class = "text-danger" })
             </div>
         </div>
-        Цена:
+        Ціна:
         <div class="form-group">
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
@@ -118,16 +118,16 @@
             </div>
         </div>
 
-        Выберете фирму-производителя:
+        Выберіть фірму-виробника:
         <div class="form-group">
             @Html.DropDownListFor(model => model.FirmId, ViewBag.firms as SelectList)
         </div>
-        Выберете страну-производителя:
+        Выберіть країну-виробника:
         <div class="form-group">
             @Html.DropDownListFor(model => model.CountryId, ViewBag.countries as SelectList)
         </div>
 
-        Выберете фото:
+        Выберіть фото:
         <div class="form-group">
             <div class="col-md-10">
                 <p>
@@ -138,7 +138,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Сохранить" class="btn btn-warning" />
+                <input type="submit" value="Зберегти" class="btn btn-warning" />
             </div>
         </div>
     </div>

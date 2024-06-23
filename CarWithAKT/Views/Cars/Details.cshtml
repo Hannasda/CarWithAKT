@@ -6,7 +6,7 @@
 }
 <div class="container">
     <div class="pagetitle">
-        <h2>Подробности о товаре</h2>
+        <h2>Подробиці про товар</h2>
         <form action="@Url.Action("Index","Cars")"><button style="display:block;margin: 0 auto" class="mybutton">Вернутся к списку</button></form>
     </div>
     <hr />
@@ -18,7 +18,7 @@
                 @Html.DisplayFor(model => model.Modelname)
             </div>
             <div class="detailsprice">
-                Цена: @Html.DisplayFor(model => model.Price)
+                Ціна: @Html.DisplayFor(model => model.Price)
             </div>
             @using (@Html.BeginForm("Details", "Cars", Model.Id, FormMethod.Get))
             {
@@ -29,19 +29,19 @@
                         {
                             if (Model.Id == F.Car.Id)
                             {
-                                <div>Убрать из корзины</div>
+                                <div>Видалити з корзини</div>
                                 break;
                             }
                             if (ViewBag.Bas[ViewBag.Bas.Count - 1] == F)
                             {
-                                <div>Добавить в корзину</div>
+                                <div>Додати в корзину</div>
                                 break;
                             }
                         }
                     }
                     else
                     {
-                        <div>Добавить в корзину</div>
+                        <div>Додати в корзину</div>
                     }
                 </button>
             }
@@ -74,8 +74,8 @@
     <div id="botbtn">
         @if (User.IsInRole("admin") || (User.IsInRole("worker")))
         {
-            <form action="@Url.Action("Edit", "Cars", new { id = Model.Id })"> <button class="mybutton">Изменить</button></form>
-            <form style="margin-left:5px;" action="@Url.Action("Delete", "Cars", new { id = Model.Id })"> <button class="mybutton">Удалить</button></form>
+            <form action="@Url.Action("Edit", "Cars", new { id = Model.Id })"> <button class="mybutton">Змінити</button></form>
+            <form style="margin-left:5px;" action="@Url.Action("Delete", "Cars", new { id = Model.Id })"> <button class="mybutton">Видалити</button></form>
         }
     </div>
 </div>

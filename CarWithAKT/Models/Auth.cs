@@ -25,7 +25,7 @@ namespace CarWithAKT.Models
 
             [Required]
             [DataType(DataType.Password)]
-            [Compare("Password", ErrorMessage = "Пароли не совпадают")]
+            [Compare("Password", ErrorMessage = "Паролі не відповідають")]
             public string ConfirmPassword { get; set; }
             public string Name { get; set; }
             public string Surname { get; set; }

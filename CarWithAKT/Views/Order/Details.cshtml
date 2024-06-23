@@ -1,7 +1,7 @@
 ﻿@model CarWithAKT.Models.Order
 
 @{
-    ViewBag.Title = "Подробности о заказе";
+    ViewBag.Title = "Подробності о замовленні";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,11 +10,11 @@
         <h2>Заказ</h2>
         @if (User.IsInRole("admin") || User.IsInRole("worker"))
         {
-            <form action="@Url.Action("Index","Order")"><button style="display:block;margin: 0 auto" class="mybutton">Вернутся к списку</button></form>
+            <form action="@Url.Action("Index","Order")"><button style="display:block;margin: 0 auto" class="mybutton">Повернутись до списку</button></form>
         }
         else
         {
-            <form action="@Url.Action("MyIndex","Order")"><button style="display:block;margin: 0 auto" class="mybutton">Вернутся к списку</button></form>
+            <form action="@Url.Action("MyIndex","Order")"><button style="display:block;margin: 0 auto" class="mybutton">Повернутись к списку</button></form>
         }
     </div>
     <hr />
@@ -26,7 +26,7 @@
             </th>
             <th></th>
             <th class="basketcell" style="height:37px">
-                <p>Цена</p>
+                <p>Ціна</p>
             </th>
             <th></th>
             <th></th>
@@ -57,15 +57,15 @@
     <div>
         <hr />
         <table>
-            <tr><th>Номер заказа</th><td style="padding-left:50px">@Html.DisplayFor(model => model.Id)</td></tr>
-            <tr><th>Имя заказчика</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.Client.Name)</td></tr>
-            <tr><th>Номер заказчика</th><td style="padding-left: 50px">  @Html.DisplayFor(model => model.Client.Phone)</td></tr>
-            <tr><th>Id работника</th><td style="padding-left: 50px">  @Html.DisplayFor(model => model.Worker.ClientId)</td></tr>
-            <tr><th>Статус заказа</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.Status.Name)</td></tr>
-            <tr><th>Место провидения</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.Location.Name)</td></tr>
-            <tr><th>Дата провидения</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.Date)</td></tr>
-            <tr><th>Дата создания заказа</th><td style="padding-left: 50px"> @Html.DisplayFor(model => model.CreateDate)</td></tr>
-            <tr><th>Полная стоимость</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.FullPrice)</td></tr>
+            <tr><th>Номер замовлення</th><td style="padding-left:50px">@Html.DisplayFor(model => model.Id)</td></tr>
+            <tr><th>Ім`я замовника</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.Client.Name)</td></tr>
+            <tr><th>Номер замовника</th><td style="padding-left: 50px">  @Html.DisplayFor(model => model.Client.Phone)</td></tr>
+            <tr><th>Id рабітника</th><td style="padding-left: 50px">  @Html.DisplayFor(model => model.Worker.ClientId)</td></tr>
+            <tr><th>Статус замовлення</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.Status.Name)</td></tr>
+            <tr><th>Місце проведення</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.Location.Name)</td></tr>
+            <tr><th>Дата проведення</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.Date)</td></tr>
+            <tr><th>Дата створення замовлення</th><td style="padding-left: 50px"> @Html.DisplayFor(model => model.CreateDate)</td></tr>
+            <tr><th>Повна ціна</th><td style="padding-left: 50px">@Html.DisplayFor(model => model.FullPrice)</td></tr>
         </table>
     </div>
     <div>

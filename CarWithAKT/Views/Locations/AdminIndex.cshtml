@@ -6,7 +6,7 @@
 }
 <div class="container">
     <div class="pagetitle">
-        <h2>Доступные салоны:</h2>
+        <h2>Доступні салони:</h2>
 
 
         <form action="@Url.Action("Create","Locations")"><button style="display:block;margin: 0 auto" class="mybutton">Добавить салон</button></form>
@@ -17,10 +17,10 @@
     <table class="table mytable" style="margin-top:20px">
         <tr>
             <th>
-                Название салона
+                Назва салону
             </th>
             <th>
-                Адресс
+                Адреса
             </th>
             <th></th>
         </tr>
@@ -35,9 +35,9 @@
                     @Html.DisplayFor(modelItem => item.Adress)
                 </td>
                 <td>
-                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { @style = "text-decoration:none;color:black" })
+                    @Html.ActionLink("Видалити", "Delete", new { id = item.Id }, new { @style = "text-decoration:none;color:black" })
                     <p style="width:30px"></p>
-                    @Html.ActionLink("Изменить название", "Edit", new { id = item.Id }, new { @style = "text-decoration:none;color:black" })
+                    @Html.ActionLink("Змінити назву", "Edit", new { id = item.Id }, new { @style = "text-decoration:none;color:black" })
                 </td>
             </tr>
         }

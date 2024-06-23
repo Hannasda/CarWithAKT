@@ -1,7 +1,7 @@
 ﻿@model CarShop.Models.Location
 
 @{
-    ViewBag.Title = "Новый салон";
+    ViewBag.Title = "Новий салон";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }<div class="container">
     <div class="pagetitle">
@@ -17,7 +17,7 @@
             <div class="form-group">
                 
                 <div class="col-md-10">
-                    <p>Название салона:</p>
+                    <p>Назва салону:</p>
                     @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
@@ -26,13 +26,13 @@
             <div class="form-group">
                
                 <div class="col-md-10">
-                    <p>Адресс:</p>
+                    <p>Адреса:</p>
                     @Html.EditorFor(model => model.Adress, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Adress, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <button type="submit" value="Save" class="mybutton">Сохранить</button>
+            <button type="submit" value="Save" class="mybutton">Зберегти</button>
         </div>
     }
 

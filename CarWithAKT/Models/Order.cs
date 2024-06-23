@@ -24,7 +24,7 @@ namespace CarWithAKT.Models
 
         public int FullPrice { set; get; }
 
-        [Required(ErrorMessage = "Введите желаемую дату для передачи авто")]
+        [Required(ErrorMessage = "Введіть бажану дату для передачі авто")]
         [DataType(DataType.Date)]
         public DateTime Date { set; get; }
         public DateTime CreateDate { set; get; }

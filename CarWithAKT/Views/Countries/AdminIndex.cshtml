@@ -6,7 +6,7 @@
 }
 <div class="container">
     <div class="pagetitle">
-        <h2>Страны:</h2>
+        <h2>Країни:</h2>
 
 
         <form action="@Url.Action("Create","Countries")"><button style="display:block;margin: 0 auto" class="mybutton">Добавить страну</button></form>
@@ -27,9 +27,9 @@
                     
                     <td style="width: 50%;display:flex; justify-content: center">
                         
-                        @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { @style = "text-decoration:none;color:black;" })
+                        @Html.ActionLink("Видалити", "Delete", new { id = item.Id }, new { @style = "text-decoration:none;color:black;" })
                         
-                        @Html.ActionLink("Изменить", "Edit", new { id = item.Id }, new { @style = "text-decoration:none;color:black;padding-left:20px;" })
+                        @Html.ActionLink("Змінити", "Edit", new { id = item.Id }, new { @style = "text-decoration:none;color:black;padding-left:20px;" })
                     </td>
                 </tr>
             }
