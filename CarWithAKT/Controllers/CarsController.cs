@@ -19,6 +19,10 @@ namespace CarWithAKT.Controllers
         // GET: Cars
         public ActionResult Index(string Bas)
         {
+            ViewBag.MinPrice = db.Car.Min(x => x.Price);
+            ViewBag.MaxPrice = db.Car.Max(x => x.Price);
+            ViewBag.Firms = db.Firm.ToList(); // Добавлено
+
             var Bass = db.Basket.Include(x => x.Client).Where(x => x.Client.Phone == User.Identity.Name).Include(x => x.Car).ToList();
             if (Bas != null && Bas != "")
             {
@@ -53,6 +57,27 @@ namespace CarWithAKT.Controllers
             return View(car.ToList());
         }
 
+        [HttpPost]
+        public ActionResult FilterCars(int? MinPrice, int? MaxPrice, List<int> SelectedFirms) // Добавлено
+        {
+            var cars = db.Car.Include(c => c.Firm).AsQueryable();
+
+            if (MinPrice.HasValue && MaxPrice.HasValue)
+            {
+                cars = cars.Where(x => x.Price >= MinPrice && x.Price <= MaxPrice);
+            }
+
+            if (SelectedFirms != null && SelectedFirms.Any())
+            {
+                cars = cars.Where(x => SelectedFirms.Contains(x.FirmId));
+            }
+
+            ViewBag.MinPrice = db.Car.Min(x => x.Price);
+            ViewBag.MaxPrice = db.Car.Max(x => x.Price);
+            ViewBag.Firms = db.Firm.ToList();
+
+            return View("Index", cars.ToList());
+        }
         // GET: Cars/Details/5
         public ActionResult Details(int? id, string Bas)
         {
@@ -68,7 +93,6 @@ namespace CarWithAKT.Controllers
             a = car.Img;
             a = a.Remove(0, 2);
             ViewBag.imag = a;
-
             var Bass = db.Basket.Include(x => x.Client).Where(x => x.Client.Phone == User.Identity.Name).Include(x => x.Car).ToList();
             if (Bas != null && Bas != "")
             {
@@ -100,7 +124,6 @@ namespace CarWithAKT.Controllers
             var BassEdited = db.Basket.Include(x => x.Client).Where(x => x.Client.Phone == User.Identity.Name).Include(x => x.Car).ToList();
             ViewBag.Bas = BassEdited;
 
-
             return View(car);
         }
 
@@ -115,8 +138,6 @@ namespace CarWithAKT.Controllers
         }
 
         // POST: Cars/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Color,Body_type,Fuel_type,Fuel_use,Engine_cap,Mass,Engine_type,Seats_num,Door_num,Power,Driver_type,Transmission_type,Price,Modelname,FirmId,CountryId,Img")] Car car)
@@ -139,7 +160,6 @@ namespace CarWithAKT.Controllers
         // GET: Cars/Edit/5
         public ActionResult Edit(int? id)
         {
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -156,13 +176,10 @@ namespace CarWithAKT.Controllers
             a = car.Img;
             return View(car);
         }
-
         // POST: Cars/Edit/5
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Color,Body_type,Fuel_type,Fuel_use,Engine_cap,Mass,Engine_type,Seats_num,Door_num,Power,Driver_type,Transmission_type,Price,Modelname,FirmId,CountryId, Img")] Car car)
+        public ActionResult Edit([Bind(Include = "Id,Color,Body_type,Fuel_type,Fuel_use,Engine_cap,Mass,Engine_type,Seats_num,Door_num,Power,Driver_type,Transmission_type,Price,Modelname,FirmId,CountryId,Img")] Car car)
         {
             if (car.Img == null) car.Img = a;
             else car.Img = "../Img/" + car.Img;
@@ -194,7 +211,6 @@ namespace CarWithAKT.Controllers
             return RedirectToAction("Index");
         }
 
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -203,8 +219,6 @@ namespace CarWithAKT.Controllers
             }
             base.Dispose(disposing);
         }
-
-
 
         public ActionResult Basket(string Bas, string CNTM, string CNTP)
         {
@@ -251,7 +265,7 @@ namespace CarWithAKT.Controllers
                     };
             foreach (var item in b)
             {
-                results.Add(new ViewModelForBasket {Img = item.Img, Id = item.Id, Name = item.Name, Price = item.Price, Modelname = item.Modelname, Count = item.Count });
+                results.Add(new ViewModelForBasket { Img = item.Img, Id = item.Id, Name = item.Name, Price = item.Price, Modelname = item.Modelname, Count = item.Count });
             }
             return View(results);
         }
@@ -267,5 +281,3 @@ namespace CarWithAKT.Controllers
         }
     }
 }
-
-

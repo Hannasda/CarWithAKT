@@ -42,6 +42,10 @@ namespace CarWithAKT.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(db.Locations.Any(x=>x.Name.ToLower() == location.Name.ToLower()))
+                {
+                    return RedirectToAction("Index");
+                }
                 db.Locations.Add(location);
                 db.SaveChanges();
                 return RedirectToAction("Index");

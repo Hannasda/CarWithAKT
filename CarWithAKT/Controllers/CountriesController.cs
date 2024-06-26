@@ -61,6 +61,10 @@ namespace CarWithAKT.Controllers
 
         if (ModelState.IsValid)
             {
+                if(db.Country.Any(c => c.Name.ToLower() == country.Name.ToLower()))
+                {
+                    return RedirectToAction("AdminIndex");
+                }
                 db.Country.Add(country);
                 db.SaveChanges();
                 return RedirectToAction("AdminIndex");

@@ -5,17 +5,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<img class="mainimg" src="~/Img/Mainpages/mainimg.jpeg"/>
+<img class="mainimg" src="~/Img/Mainpages/mainimg.jpeg" />
 <div class="container">
     <div class="pagetitle">
         <h2>Каталог авто</h2>
 
         @if (User.IsInRole("admin") || User.IsInRole("worker"))
         {
-                <form action="@Url.Action("Create","Cars")"><button style="display:block;margin: 0 auto" class="mybutton">Создать новое авто</button></form>
+            <form action="@Url.Action("Create", "Cars")"><button style="display:block;margin: 0 auto" class="mybutton">Создать новое авто</button></form>
         }
     </div>
     <hr />
+    @using (Html.BeginForm("FilterCars", "Cars", FormMethod.Post)) // Добавлено
+    {
+        <div class="row">
+            <div class="col">
+                <label for="priceRange">Диапазон цен</label>
+                <div id="priceRange"></div>
+                <input type="number" name="MinPrice" id="minPriceInput" class="form-control" placeholder="Мин. цена" style="margin-top: 10px;" min="@ViewBag.MinPrice" max="@ViewBag.MaxPrice" />
+                <input type="number" name="MaxPrice" id="maxPriceInput" class="form-control" placeholder="Макс. цена" style="margin-top: 10px;" min="@ViewBag.MinPrice" max="@ViewBag.MaxPrice" />
+                <input type="hidden" name="MinPrice" id="minPrice" />
+                <input type="hidden" name="MaxPrice" id="maxPrice" />
+                <p>
+                    Цена: <span id="priceLabel"></span>
+                </p>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <label>Марки авто</label>
+                @foreach (var firm in ViewBag.Firms as List<CarWithAKT.Models.Firm>) // Добавлено
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="SelectedFirms" value="@firm.Id" id="firm_@firm.Id" />
+                        <label class="form-check-label" for="firm_@firm.Id">@firm.Name</label>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Применить фильтры</button>
+            </div>
+        </div>
+    }
     <div class="row mt-15 mb-2">
         @foreach (var item in Model)
         {
@@ -49,28 +82,64 @@
                                 <div>Додати в корзину</div>
                             }
                         </button>
-                        <input type="hidden"/>
+                        <input type="hidden" />
                     }
-
-
-
                 </div>
             </a>
         }
     </div>
-
 </div>
+<script>
+    $(function() {
+        var minPrice = @ViewBag.MinPrice;
+        var maxPrice = @ViewBag.MaxPrice;
+        $("#priceRange").slider({
+            range: true,
+            min: minPrice,
+            max: maxPrice,
+            values: [minPrice, maxPrice],
+            slide: function(event, ui) {
+                $("#priceLabel").text(ui.values[0] + " - " + ui.values[1]);
+                $("#minPrice").val(ui.values[0]);
+                $("#maxPrice").val(ui.values[1]);
+                $("#minPriceInput").val(ui.values[0]);
+                $("#maxPriceInput").val(ui.values[1]);
+            }
+        });
+        $("#priceLabel").text($("#priceRange").slider("values", 0) + " - " + $("#priceRange").slider("values", 1));
+        $("#minPrice").val($("#priceRange").slider("values", 0));
+        $("#maxPrice").val($("#priceRange").slider("values", 1));
+        $("#minPriceInput").val($("#priceRange").slider("values", 0));
+        $("#maxPriceInput").val($("#priceRange").slider("values", 1));
 
-<script>let cords = ['scrollX', 'scrollY'];
-    // save scroll piosition in localStorage
+        $("#minPriceInput").on("input", function() {
+            var min = parseInt($(this).val());
+            if (min >= minPrice && min <= maxPrice) {
+                $("#priceRange").slider("values", 0, min);
+                $("#minPrice").val(min);
+                $("#priceLabel").text($("#priceRange").slider("values", 0) + " - " + $("#priceRange").slider("values", 1));
+            }
+        });
+
+        $("#maxPriceInput").on("input", function() {
+            var max = parseInt($(this).val());
+            if (max >= minPrice && max <= maxPrice) {
+                $("#priceRange").slider("values", 1, max);
+                $("#maxPrice").val(max);
+                $("#priceLabel").text($("#priceRange").slider("values", 0) + " - " + $("#priceRange").slider("values", 1));
+            }
+        });
+    });
+
+    let cords = ['scrollX', 'scrollY'];
+    // save scroll position in localStorage
     window.addEventListener('unload', e => cords.forEach(cord => localStorage[cord] = window[cord]));
     // add event on load page
     window.addEventListener('load', e => {
         // if localStorage have data
         if (localStorage[cords[0]]) {
-            // scroll at save cords
             window.scroll(...cords.map(cord => localStorage[cord]));
-            // remove data in localStorage
             cords.forEach(cord => localStorage.removeItem(cord));
         }
-    });</script>
+    });
+</script>

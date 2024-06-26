@@ -27,10 +27,12 @@ namespace CarWithAKT.Models
             [DataType(DataType.Password)]
             [Compare("Password", ErrorMessage = "Паролі не відповідають")]
             public string ConfirmPassword { get; set; }
+
+            [Required, RegularExpression("([A-Z]+)|([a-z]+)", ErrorMessage ="Використовуються недозволені символи")]
             public string Name { get; set; }
             public string Surname { get; set; }
             [Required]
-            [DataType(DataType.EmailAddress)]
+            [DataType(DataType.EmailAddress, ErrorMessage ="Не коректна адреса електронної пошти")]
             public string Email { get; set; }
         }
     }

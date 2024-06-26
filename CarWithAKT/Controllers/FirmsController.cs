@@ -35,6 +35,10 @@ namespace CarWithAKT.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (db.Firm.Any(f => f.Name.ToLower() == firm.Name.ToLower()))
+                {
+                    return RedirectToAction("Index");
+                }
                 db.Firm.Add(firm);
                 db.SaveChanges();
                 return RedirectToAction("Index");
